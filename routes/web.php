@@ -18,7 +18,7 @@ Route::get('/', function () {
 
 // Dashboard Mahasiswa
 Route::get('/dashboard', [KeluhanController::class, 'index'])
-    ->middleware(['auth', 'verified'])
+    ->middleware(['auth',])
     ->name('dashboard');
 
 // Route Keluhan Mahasiswa
