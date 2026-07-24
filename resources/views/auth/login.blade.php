@@ -272,6 +272,13 @@
         <div class="footer-text">
             &copy; {{ date('Y') }} <span>Lab Informatika</span> — Sistem Helpdesk
         </div>
+        <div class="text-center mt-3">
+    <small class="text-muted">Belum punya akun? 
+        <a href="{{ route('register') }}" style="color:#1565c0; font-weight:600;">
+            Daftar di sini
+        </a>
+    </small>
+</div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
