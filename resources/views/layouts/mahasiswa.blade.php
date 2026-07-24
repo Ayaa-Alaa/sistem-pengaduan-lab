@@ -7,6 +7,40 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
     <style>
+        /* ================= MOBILE ================= */
+@media (max-width: 768px){
+
+    .sidebar{
+    transform: translateX(-100%);
+    transition: transform .3s ease;
+    z-index: 1050;
+    width:250px;
+}
+
+.sidebar.show{
+    transform: translateX(0);
+}
+
+    .sidebar.show{
+        transform: translateX(0);
+    }
+
+    .main-content{
+        margin-left: 0;
+        padding: 15px;
+    }
+
+    .topbar{
+        padding: 12px 15px;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .logo-area{
+        padding:18px;
+    }
+
+}
         body { background-color: #f0f2f5; }
         .sidebar {
             min-height: 100vh;
@@ -52,6 +86,26 @@
         .stat-card:hover { transform: translateY(-3px); }
     </style>
 </head>
+
+<script>
+const menuBtn = document.getElementById('menuBtn');
+const sidebar = document.querySelector('.sidebar');
+
+if(menuBtn){
+    menuBtn.addEventListener('click', function(){
+        sidebar.classList.toggle('show');
+    });
+
+    document.addEventListener('click', function(e){
+        if(window.innerWidth <= 768){
+            if(!sidebar.contains(e.target) && !menuBtn.contains(e.target)){
+                sidebar.classList.remove('show');
+            }
+        }
+    });
+}
+</script>
+
 <body>
     <div class="sidebar d-flex flex-column">
        <div class="logo-area">
@@ -88,6 +142,11 @@
     </div>
 
     <div class="main-content">
+
+        <button class="btn btn-primary d-md-none mb-3" id="menuBtn">
+    <i class="bi bi-list"></i>
+</button>
+
         <div class="topbar">
             <h6 class="mb-0 fw-bold">@yield('title')</h6>
             <span class="text-muted small"><i class="bi bi-calendar3 me-1"></i>{{ now()->format('d F Y') }}</span>
